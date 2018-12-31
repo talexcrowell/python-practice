@@ -14,3 +14,18 @@ ingredients = {
   "fruity": ["slice of orange", "dash of cassis", "cherry on top"],
 }
 
+def ingredients_questions():
+  '''This function asks the user what kind of ingredients the want in their pirate cocktail'''
+  choices = {}
+  for question in questions:
+    answer = input(questions[question] + ": ")
+    if answer == "Y" or answer == 'y':
+      choices[question] = True
+    elif answer == "N" or answer == 'n':
+      choices[question] = False
+  
+  print(choices)
+  return choices
+
+if __name__ == '__main__':
+  ingredients_questions()
