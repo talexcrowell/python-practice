@@ -67,6 +67,4 @@ def bartender():
   
 
 if __name__ == '__main__':
-  bartending = True
-  while bartending:
-    bartender()
+  bartender()
