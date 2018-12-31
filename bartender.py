@@ -1,3 +1,5 @@
+import random
+
 questions = {
   "strong":"Do ye like yer drinks strong?",
   "salty": "Do ye like it with a salty tang?",
@@ -19,13 +21,29 @@ def ingredients_questions():
   choices = {}
   for question in questions:
     answer = input(questions[question] + ": ")
-    if answer == "Y" or answer == 'y':
+    if answer == "Y" or answer == 'y' or answer == 'Yes' or answer == 'yes':
       choices[question] = True
-    elif answer == "N" or answer == 'n':
+    elif answer == "N" or answer == 'n' or answer == 'No' or answer == 'no':
       choices[question] = False
-  
-  print(choices)
+    else:
+      print('Give me a quick yes or no (y/n)! I don\'t have time for your life story! Anyways...')
   return choices
 
+def make_drink(choices):
+  '''This function returns a drink based off the users choices of flavors'''
+  drink =[]
+  for choice in choices:
+    if choices[choice] == True:
+      drink.append(random.choice(ingredients[choice]))
+  return drink
+      
+def bartender():
+  '''This function combines the ingredients_questions and make_drink functions''' 
+  choices = ingredients_questions()
+  drink = make_drink(choices)
+  name = input("Name ye drink, matey!: ")
+  print("A {} made with {}".format(name, drink))
+
+
 if __name__ == '__main__':
-  ingredients_questions()
+  bartender()
